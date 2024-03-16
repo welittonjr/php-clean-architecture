@@ -6,11 +6,15 @@ use App\Infrastructure\Framework\Adapters\ContainerAdapter;
 require __DIR__ . '/../vendor/autoload.php';
 
 $containerAdapter = new ContainerAdapter();
-$containerAdapter->loadDependencyInjection(__DIR__ . '/../config',['dependences', 'repositories']);
+$containerAdapter->loadDependencyInjection(
+    __DIR__ . '/../config',
+    ['dependences', 'repositories']
+);
 
 $appAdapter = new AppAdapter($containerAdapter);
 
-$appAdapter->loadFileEnv(__DIR__ . '/../env',
+$appAdapter->loadFileEnv(
+    __DIR__ . '/../env',
     '.exemple.env'
 );
 
