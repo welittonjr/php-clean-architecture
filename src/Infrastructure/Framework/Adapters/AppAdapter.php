@@ -6,6 +6,7 @@ namespace App\Infrastructure\Framework\Adapters;
 
 use App\Infrastructure\Framework\Interfaces\IApp;
 use App\Infrastructure\Framework\Interfaces\IContainer;
+use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Slim\App;
 
@@ -17,6 +18,20 @@ class AppAdapter implements IApp
     {
         AppFactory::setContainer($container->getBuild());
         $this->app = AppFactory::create();
+    }
+
+    public function loadFileEnv(string $path, string $fileEnv)
+    {
+        $filePath = $path .'/'. $fileEnv;
+
+        if (!file_exists($filePath)) {
+            $errorMessage = "File not found: $filePath";
+            error_log($errorMessage, 0);
+            return;
+        }
+
+        $dotenv = Dotenv::createImmutable($path, $fileEnv);
+        $dotenv->load();
     }
 
     public function loadRoutes(string $path, string $file)
