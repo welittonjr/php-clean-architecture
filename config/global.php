@@ -2,23 +2,11 @@
 
 return [
 
-    'redis' => [
-        'host' => getenv('REDIS_HOST'),
-        'port' => getenv('REDIS_PORT'),
-    ],
-    'aws' => [
-        's3' => [
-            'region' => getenv('AWS_S3_REGION'),
-            'bucket' => getenv('AWS_S3_BUCKET'),
-            'prefix_path' => getenv('AWS_S3_PREFIX_PATH'),
-            'version' => getenv('AWS_S3_VERSION'),
-        ],
-        'sqs' => [
-            'host' => getenv('AWS_SQS_HOST'),
-            'version' => getenv('AWS_SQS_VERSION'),
-            'region' => getenv('AWS_SQS_REGION'),
-            'key' => getenv('AWS_SQS_KEY'),
-            'secret' => getenv('AWS_SQS_SECRET'),
-        ]
+    'database' => [
+        'host' => getenv('DB_HOST'),
+        'port' => getenv('DB_PORT'),
+        'name' => getenv('DB_PORT'),
+        'pass' => getenv('DB_PORT'),
+        'driver' => getenv('DB_PORT')
     ]
 ];
