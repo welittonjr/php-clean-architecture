@@ -32,7 +32,7 @@ class AppAdapter implements IApp
             return;
         }
 
-        $dotenv = Dotenv::createImmutable($path, $fileEnv);
+        $dotenv = Dotenv::createUnsafeImmutable($path, $fileEnv);
         $dotenv->load();
     }
 
