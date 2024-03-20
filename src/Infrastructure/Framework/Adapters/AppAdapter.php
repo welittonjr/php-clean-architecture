@@ -14,7 +14,9 @@ class AppAdapter implements IApp
 {
     private App $app;
 
-    public function __construct(IContainer $container)
+    public function __construct(){}
+
+    public function setContainer(IContainer $container)
     {
         AppFactory::setContainer($container->getBuild());
         $this->app = AppFactory::create();
