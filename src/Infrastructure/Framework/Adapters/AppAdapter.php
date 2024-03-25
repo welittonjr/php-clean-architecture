@@ -76,7 +76,8 @@ class AppAdapter implements IApp
             return;
         }
 
-        // develop the middleware
+        $middleware = require $filePath;
+        $this->app->add($middleware);
     }
 
 }
