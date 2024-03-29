@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Framework\Adapters;
+namespace App\Infrastructure\Adapters;
 
-use App\Infrastructure\Framework\Interfaces\IContainer;
 use DI\Container;
 use DI\ContainerBuilder;
 
-class ContainerAdapter implements IContainer
+class ContainerAdapter
 {
     private $containerBuilder;
 

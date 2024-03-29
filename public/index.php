@@ -1,7 +1,7 @@
 <?php
 
-use App\Infrastructure\Framework\Adapters\AppAdapter;
-use App\Infrastructure\Framework\Adapters\ContainerAdapter;
+use App\Infrastructure\Adapters\AppAdapter;
+use App\Infrastructure\Adapters\ContainerAdapter;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -13,7 +13,7 @@ $containerAdapter->loadDependencyInjection(
     ['dependences', 'repositories']
 );
 
-$appAdapter->setContainer($containerAdapter);
+$appAdapter->setContainer($containerAdapter->getBuild());
 
 $appAdapter->loadFileEnv(
     __DIR__ . '/../env',

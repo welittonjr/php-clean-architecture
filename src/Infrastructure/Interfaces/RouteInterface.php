@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Framework\Interfaces;
+namespace App\Infrastructure\Interfaces;
 
-interface IRoute
+interface RouteInterface
 {
     public function get(string $pattern, $callable);
     public function post(string $pattern, $callable);

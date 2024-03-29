@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Framework\Adapters;
+namespace App\Infrastructure\Adapters;
 
-use App\Infrastructure\Framework\Interfaces\IRoute;
+use App\Infrastructure\Interfaces\RouteInterface;
 use Slim\App;
 
-class RouteAdapter implements IRoute
+class RouteAdapter implements RouteInterface
 {
     private App $app;
 

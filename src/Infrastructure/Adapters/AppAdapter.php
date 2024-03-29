@@ -2,23 +2,22 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Framework\Adapters;
+namespace App\Infrastructure\Adapters;
 
-use App\Infrastructure\Framework\Interfaces\IApp;
-use App\Infrastructure\Framework\Interfaces\IContainer;
+use DI\Container;
 use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Slim\App;
 
-class AppAdapter implements IApp
+class AppAdapter
 {
     private App $app;
 
     public function __construct(){}
 
-    public function setContainer(IContainer $container)
+    public function setContainer(Container $container)
     {
-        AppFactory::setContainer($container->getBuild());
+        AppFactory::setContainer($container);
         $this->app = AppFactory::create();
     }
 
