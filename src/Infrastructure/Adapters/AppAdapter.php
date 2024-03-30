@@ -55,7 +55,6 @@ class AppAdapter
         $router = new RouteAdapter($this->app);
         $routes = require $filePath;
         $routes($router);
-        $this->app->run();
     }
 
     public function loadMiddlewares(string $path, string $file)
@@ -77,6 +76,11 @@ class AppAdapter
 
         $middleware = require $filePath;
         $this->app->add($middleware);
+    }
+
+    public function getApp()
+    {
+        return $this->app;
     }
 
 }

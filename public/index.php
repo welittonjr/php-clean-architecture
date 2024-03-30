@@ -24,3 +24,7 @@ $appAdapter->loadRoutes(
     __DIR__ . '/../config',
     'routes'
 );
+
+$appAdapter
+    ->getApp()
+    ->run();
