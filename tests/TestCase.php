@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase as PHPUnit_TestCase;
 
 class TestCase extends PHPUnit_TestCase
 {
-    public function App()
+    public function getApp()
     {
         $containerAdapter = new ContainerAdapter();
         $appAdapter = new AppAdapter();

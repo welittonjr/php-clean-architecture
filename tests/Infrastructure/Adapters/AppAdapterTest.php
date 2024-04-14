@@ -12,7 +12,7 @@ class AppAdapterTest extends TestCase
     public function testLoadRoutes()
     {
         
-        $app = $this->App();
+        $app = $this->getApp();
         $this->assertInstanceOf(App::class, $app);
 
         ob_start(); // Capture a saída para evitar que o aplicativo envie a resposta HTTP

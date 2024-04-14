@@ -8,6 +8,6 @@ return [
         'name' => getenv('DB_NAME'),
         'user' => getenv('DB_USER'),
         'pass' => getenv('DB_PASS'),
-        'drive' => getenv('DB_DRIVE')
+        'driver' => getenv('DB_DRIVER')
     ]
 ];
