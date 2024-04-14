@@ -4,25 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Infrastructure\Adapters;
 
-use PHPUnit\Framework\TestCase;
-use App\Infrastructure\Adapters\AppAdapter;
-use DI\Container;
 use Slim\App;
+use Tests\TestCase;
 
 class AppAdapterTest extends TestCase
 {
     public function testLoadRoutes()
     {
-        $appAdapter = new AppAdapter();
-
-        $container = new Container();
-        $appAdapter->setContainer($container);
-
-        $path = __DIR__ . '/../../../config';
-        $file = 'routes';
-        $appAdapter->loadRoutes($path, $file);
-
-        $app = $appAdapter->getApp();
+        
+        $app = $this->App();
         $this->assertInstanceOf(App::class, $app);
 
         ob_start(); // Capture a saída para evitar que o aplicativo envie a resposta HTTP
