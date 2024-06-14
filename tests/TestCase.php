@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use App\Infrastructure\Adapters\AppAdapter;
-use App\Infrastructure\Adapters\ContainerAdapter;
+use App\Infrastructure\Framework\AppAdapter;
+use App\Infrastructure\Framework\ContainerAdapter;
 use PHPUnit\Framework\TestCase as PHPUnit_TestCase;
 
 class TestCase extends PHPUnit_TestCase

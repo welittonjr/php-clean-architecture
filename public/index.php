@@ -1,7 +1,7 @@
 <?php
 
-use App\Infrastructure\Adapters\AppAdapter;
-use App\Infrastructure\Adapters\ContainerAdapter;
+use App\Infrastructure\Framework\AppAdapter;
+use App\Infrastructure\Framework\ContainerAdapter;
 
 require __DIR__ . '/../vendor/autoload.php';
 

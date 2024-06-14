@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Infrastructure\Adapters;
+namespace Tests\Infrastructure\Framework;
 
 use Slim\App;
 use Tests\TestCase;

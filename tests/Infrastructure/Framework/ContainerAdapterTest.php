@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Infrastructure\Adapters;
+namespace Tests\Infrastructure\Framework;
 
 use PHPUnit\Framework\TestCase;
-use App\Infrastructure\Adapters\ContainerAdapter;
+use App\Infrastructure\Framework\ContainerAdapter;
 use DI\Container;
 
 class ContainerAdapterTest extends TestCase

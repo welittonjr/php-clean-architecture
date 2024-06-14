@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Infrastructure\Adapters;
+namespace Tests\Infrastructure\Framework;
 
-use App\Infrastructure\Adapters\RouteAdapter;
+use App\Infrastructure\Framework\RouteAdapter;
 use PHPUnit\Framework\TestCase;
 use Slim\App;
 

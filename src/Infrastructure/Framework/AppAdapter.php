@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Adapters;
+namespace App\Infrastructure\Framework;
 
 use DI\Container;
 use Dotenv\Dotenv;
