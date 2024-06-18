@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\Infrastructure\Models;
+namespace Tests\Domain\Entities;
 
-use App\Infrastructure\Persistence\Models\UserModel;
+use App\Domain\Entities\User;
 use Tests\TestCase;
 
-class UserModelTest extends TestCase
+class UserTest extends TestCase
 {
     public function testGettersAndSetters() 
     {
-        $user = new UserModel();
+        $user = new User();
         $user->setId(1);
         $user->setName("wellington");
         $user->setEmail("wellington@gmail.com");

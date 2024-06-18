@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Persistence\Models;
+namespace App\Domain\Entities;
 
-class UserModel
+class User
 {
 
     private $id;
