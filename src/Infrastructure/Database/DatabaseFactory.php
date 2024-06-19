@@ -29,28 +29,29 @@ class DatabaseFactory
     private static function createDsn(array $database): string
     {
         $driver = $database['driver'] ?? '';
-        
-        if ($driver === 'mysql') {
+        $dbTest = $database['test'] ?? false;
+
+        if ($driver === 'mysql' && $dbTest === false) {
             $host = $database['host'] ?? '';
             $name = $database['name'] ?? '';
             $user = $database['user'] ?? '';
             $pass = $database['pass'] ?? '';
-            var_dump($database);
+
             if ($host && $name && $user && $pass) {
                 return "mysql:host={$host};dbname={$name};charset=utf8mb4";
             } else {
-                throw new Exception('Cannot create DSN for MySQL: missing required parameters.');
+                throw new \InvalidArgumentException('Cannot create DSN for MySQL: missing required parameters.');
             }
-        } elseif ($driver === 'sqlite') {
-            $dbPath = __DIR__ . '/../../../' . $database['host'] ?? '';
-            
+        } elseif ($driver === 'sqlite' && $dbTest === true) {
+            $dbPath = __DIR__ . '/../../../' . ($database['host'] ?? '');
+
             if ($dbPath) {
                 return "sqlite:{$dbPath}";
             } else {
-                throw new Exception('Cannot create DSN for SQLite: missing database path.');
+                throw new \InvalidArgumentException('Cannot create DSN for SQLite: missing database path.');
             }
         } else {
-            throw new Exception('Cannot create DSN: invalid or missing database driver.');
+            throw new \InvalidArgumentException('Cannot create DSN: invalid or missing database driver.');
         }
     }
 }
