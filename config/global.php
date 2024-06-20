@@ -3,12 +3,15 @@
 return [
 
     'database' => [
-        'host' => getenv('DB_HOST'),
-        'port' => getenv('DB_PORT'),
-        'name' => getenv('DB_NAME'),
-        'user' => getenv('DB_USER'),
-        'pass' => getenv('DB_PASS'),
-        'driver' => getenv('DB_DRIVER'),
-        'test' => getenv('DB_TEST')
+        'host' => getenv('DATABASE_HOST'),
+        'port' => getenv('DATABASE_PORT'),
+        'name' => getenv('DATABASE_NAME'),
+        'user' => getenv('DATABASE_USER'),
+        'pass' => getenv('DATABASE_PASS'),
+        'driver' => getenv('DATABASE_DRIVER'),
+    ],
+    'database_test' => [
+        'name' => getenv('DATABASE_TEST_NAME'),
+        'driver' => getenv('DATABASE_TEST_DRIVER')
     ]
 ];
