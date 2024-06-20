@@ -9,9 +9,11 @@ use PDO;
 
 class DatabaseFactory
 {
-    public static function create(array $config): PDO
+    public static function create(array $database): PDO
     {
-        $dsn = self::createDsn($config['database']);
+        $dsn = self::createDsn($database);
+        $user = $database['user'] ?? '';
+        $pass = $database['pass'] ?? '';
 
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -20,7 +22,7 @@ class DatabaseFactory
         ];
 
         try {
-            return new PDO($dsn, $config['database']['user'], $config['database']['pass'], $options);
+            return new PDO($dsn, $user , $pass, $options);
         } catch (\PDOException $e) {
             throw new Exception("Erro ao conectar ao banco de dados: " . $e->getMessage());
         }
@@ -29,29 +31,36 @@ class DatabaseFactory
     private static function createDsn(array $database): string
     {
         $driver = $database['driver'] ?? '';
-        $dbTest = $database['test'] ?? false;
 
-        if ($driver === 'mysql' && $dbTest === false) {
-            $host = $database['host'] ?? '';
-            $name = $database['name'] ?? '';
-            $user = $database['user'] ?? '';
-            $pass = $database['pass'] ?? '';
-
-            if ($host && $name && $user && $pass) {
-                return "mysql:host={$host};dbname={$name};charset=utf8mb4";
-            } else {
-                throw new \InvalidArgumentException('Cannot create DSN for MySQL: missing required parameters.');
-            }
-        } elseif ($driver === 'sqlite' && $dbTest === true) {
-            $dbPath = __DIR__ . '/../../../' . ($database['host'] ?? '');
-
-            if ($dbPath) {
-                return "sqlite:{$dbPath}";
-            } else {
-                throw new \InvalidArgumentException('Cannot create DSN for SQLite: missing database path.');
-            }
+        if ($driver === 'mysql') {
+            return self::createDsnMysql($database);
+        } elseif ($driver === 'sqlite') {
+            return self::createDsnSQLite($database);
         } else {
             throw new \InvalidArgumentException('Cannot create DSN: invalid or missing database driver.');
+        }
+    }
+
+    private static function createDsnMysql(array $database): string
+    {
+        $host = $database['host'] ?? '';
+        $name = $database['name'] ?? '';
+
+        if ($host && $name) {
+            return "mysql:host={$host};dbname={$name};charset=utf8mb4";
+        } else {
+            throw new \InvalidArgumentException('Cannot create DSN for MySQL: missing required parameters.');
+        }
+    }
+
+    private static function createDsnSQLite(array $database): string
+    {
+        $dbPath = __DIR__ . '/../../../' . ($database['name'] ?? '');
+
+        if ($dbPath) {
+            return "sqlite:{$dbPath}";
+        } else {
+            throw new \InvalidArgumentException('Cannot create DSN for SQLite: missing database path.');
         }
     }
 }

@@ -11,7 +11,7 @@ class DatabaseFactoryTest extends TestCase
         $container = $app->getContainer();
         $config = $container->get('config');
 
-        $database = DatabaseFactory::create($config);
+        $database = DatabaseFactory::create($config['database_test']);
 
         $this->assertInstanceOf(PDO::class, $database);
     }
