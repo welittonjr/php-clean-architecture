@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Framework;
 
-use App\Infrastructure\Interfaces\RouteInterface;
+use App\Infrastructure\Framework\Interfaces\RouteInterface;
 use Slim\App;
 
 class RouteAdapter implements RouteInterface
