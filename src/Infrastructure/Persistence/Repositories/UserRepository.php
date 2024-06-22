@@ -9,6 +9,7 @@ use PDO;
 class UserRepository implements UserRepositoryInterface
 {
     private PDO $pdo;
+    private string $table = 'app_users';
 
     public function __construct(PDO $pdo)
     {
@@ -22,7 +23,11 @@ class UserRepository implements UserRepositoryInterface
     }
     public function create(User $user): bool
     {
-        return true;
+        $stmt = $this->pdo->prepare("INSERT INTO {$this->table} (name, email, password) VALUES (:name, :email, :password)");
+        $stmt->bindParam(':name', $user->getName(), PDO::PARAM_STR);
+        $stmt->bindParam(':email', $user->getEmail(), PDO::PARAM_STR);
+        $stmt->bindParam(':password', $user->getPassword(), PDO::PARAM_STR);
+        return $stmt->execute();
     }
     public function update()
     {

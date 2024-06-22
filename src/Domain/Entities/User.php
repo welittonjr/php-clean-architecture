@@ -7,24 +7,20 @@ class User
 
     private $id;
 
-    private $userName;
-
-    private $name;
+    private string $name;
 
     private $email;
 
     private $password;
 
     public function __construct(
-        $id = null, 
-        $userName = null,
-        $name = null, 
-        $email = null, 
+        $id = null,
+        string $name = "",
+        $email = null,
         $password = null
     )
     {
         $this->id = $id;
-        $this->userName = $userName;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
@@ -49,27 +45,9 @@ class User
     }
 
     /**
-     * Get the value of userName
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
-    /**
-     * Set the value of userName
-     */
-    public function setUserName($userName): self
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
      * Get the value of name
      */
-    public function getName()
+    public function getName() :string
     {
         return $this->name;
     }
@@ -77,7 +55,7 @@ class User
     /**
      * Set the value of name
      */
-    public function setName($name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
