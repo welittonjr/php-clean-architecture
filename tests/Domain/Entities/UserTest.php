@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    public function testGettersAndSetters() 
+    public function testGettersAndSetters()
     {
         $user = new User();
         $user->setId(1);

@@ -1,0 +1,24 @@
+version: "3.4"
+
+services:
+
+  mysqldb:
+    image: mysql:8.0
+    container_name: container-mysql
+    environment:
+      MYSQL_DATABASE: skeleton
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - service-php
+
+networks:
+  service-php:
+    driver: bridge
+
+volumes:
+  mysql_data:
